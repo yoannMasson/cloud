@@ -7,11 +7,13 @@
           <h2>Document List</h2>
         </div>
         <div class="col s2">
-          <a class="btn-floating btn-large waves-effect waves-light  green"><i class="material-icons">add</i></a>
+          <a class="btn modal-trigger btn-floating btn-large waves-effect waves-light green"  href="index.php?action=addDoc"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
   </div>
+  <?php if(isset($error)){ echo $error; }?>
+  <?php if(isset($success)){ echo $success; }?>
   <div class="row">
     <div class="col s12">
       <ul class="tabs tabs-fixed-width">
@@ -88,6 +90,17 @@
       <?php }else{ echo "<h2>You are no part with any group that has documents</h2>";} ?>
     </div>
   </div>
+
+  <!-- Modal Structure -->
+<div id="modalDoc" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>

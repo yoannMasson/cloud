@@ -44,3 +44,43 @@ function login($username,$password){
 function disconnect(){
   setcookie("username", "", time() - (86400 * 30), "/");
 }
+
+function addDoc(){
+  require('Views/addDoc.php');
+}
+
+function uploadDoc(){
+  var_dump($_FILES);
+  $target_dir = "files/";
+  $imageFileType = $_FILES['file']['type'];
+  $target_file = $target_dir.basename($_FILES["file"]["name"])."_".$_COOKIE['username'];
+  $uploadOk = 1;
+  $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  // Check if image file is a actual image or fake image
+
+  // Check if file already exists
+  if (file_exists($target_file)) {
+      $error = " Sorry file already exists";
+      $uploadOk = 0;
+  }
+  // Check file size
+  if ($_FILES["file"]["size"] > 500000) {
+      $error = "Sorry, your file is too large, must be less than 500Ko";
+      $uploadOk = 0;
+  }
+  // Allow certain file formats, the !== false is intentionnal because strpos returns an offset and 0 is a valid offset
+  if(!(strpos($imageFileType, 'pdf') !== false || strpos($imageFileType, 'tex') !== false || strpos($imageFileType, 'docx') !== false )){
+      $error = "Sorry, only pdf, tex & docx files are allowed.";
+      $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+  // if everything is ok, try to upload file
+  } else {
+      if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+          $success = " Files uploaded :D";
+      } else {
+          $error =  "Sorry, there was an error uploading your file.";
+      }
+  }
+}

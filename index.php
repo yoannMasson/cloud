@@ -12,9 +12,14 @@ if (isset($_GET['action'])) {
         homePage();
       }
     }
-
+    if($_GET['action'] == 'listDocFromAdd'  && isset($_COOKIE['username']) ){
+      uploadDoc();
+    }
     if($_GET['action'] == 'login'){
         homePage();
+    }
+    if($_GET['action'] == 'addDoc' && isset($_COOKIE['username'])){
+        addDoc();
     }
 }else{
     disconnect();
