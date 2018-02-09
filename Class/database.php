@@ -10,7 +10,7 @@
 
     public static function getInstance() {
 
-      $host = "34.238.85.32";
+      $host = "34.201.107.211";
       $dbname = "cloud";
       $user = "remote";
       $pwd = "root";
