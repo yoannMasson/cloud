@@ -46,14 +46,14 @@ function disconnect(){
 }
 
 function addDoc(){
+  $group = Database::getGroup($_COOKIE['username']);
   require('Views/addDoc.php');
 }
 
 function uploadDoc(){
-  var_dump($_FILES);
   $target_dir = "files/";
   $imageFileType = $_FILES['file']['type'];
-  $target_file = $target_dir.basename($_FILES["file"]["name"])."_".$_COOKIE['username'];
+  $target_file = $target_dir.$_COOKIE['username']."_".basename($_FILES["file"]["name"]);
   $uploadOk = 1;
   $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   // Check if image file is a actual image or fake image
@@ -77,10 +77,17 @@ function uploadDoc(){
   if ($uploadOk == 0) {
   // if everything is ok, try to upload file
   } else {
+
       if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-          $success = " Files uploaded :D";
+        if(isset($_POST['share']) && $_POST['share'] == "on"){
+          Database::addFile(basename($_FILES["file"]["name"]),$_COOKIE['username'],$_POST['group']);
+        }else{
+          Database::addFile(basename($_FILES["file"]["name"]),$_COOKIE['username'],0);
+        }
+        $success = " Files uploaded :D";
       } else {
-          $error =  "Sorry, there was an error uploading your file.";
+        $error =  "Sorry, there was an error uploading your file.";
       }
-  }
+    }
+    listDoc();
 }

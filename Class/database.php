@@ -62,4 +62,29 @@
       }
       return $group;
     }
+
+    public static function addFile($fileName,$username,$idG){
+      $db = Database::getInstance();
+      if($idG <= 0){
+        $query = $db->query("INSERT INTO `Doc` (`name`, `dateDeposit`, `lastModification`, `username`, `idGroup`) VALUES ('".$fileName."', now(), NULL, '".$username."', NULL)");
+      }else{
+        $query = $db->query("INSERT INTO `Doc` (`name`, `dateDeposit`, `lastModification`, `username`, `idGroup`) VALUES ('".$fileName."', now(), NULL, '".$username."', ".$idG.")");
+      }
+    }
+
+    public static function getGroup($username){
+      $db = Database::getInstance();
+      $query = $db->query('SELECT *
+        FROM WorkGroup w
+        WHERE (w.username1 = "'.$username.'"
+        OR w.username2 = "'.$username.'"
+        OR w.username3 = "'.$username.'");');
+      $i = 0;
+      $group = [];
+      while($log = $query->fetch()){
+        $i++;
+        $group[$i] = $log;
+      }
+      return $group;
+    }
 }

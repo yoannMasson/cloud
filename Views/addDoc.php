@@ -15,9 +15,31 @@
           </div>
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit" >Send
-       <i class="material-icons right">send</i>
-      </button>
+      <div class="row">
+        <div class="switch">
+          <label>
+            keep to myself
+            <input type="checkbox" name="share">
+            <span class="lever"></span>
+            Share to group
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12" name="group">
+          <select name="group">
+            <?php for ($i=1;$i<=count($group);$i++){ ?>
+              <option value="<?= $group[$i]["idGroup"]?>"><?= $group[$i]["name"]?></option>
+            <?php } ?>
+          </select>
+          <label>Group name</label>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" >Send
+         <i class="material-icons right">send</i>
+        </button>
+      </div>
     </form>
   </div>
 <?php $content = ob_get_clean(); ?>

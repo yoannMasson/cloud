@@ -12,8 +12,8 @@
       </div>
     </div>
   </div>
-  <?php if(isset($error)){ echo $error; }?>
-  <?php if(isset($success)){ echo $success; }?>
+  <?php if(isset($error)){ var_dump($error); }?>
+  <?php if(isset($success)){ var_dump($success); }?>
   <div class="row">
     <div class="col s12">
       <ul class="tabs tabs-fixed-width">
@@ -30,6 +30,7 @@
               <th>Name</th>
               <th>deposit date</th>
               <th>last modification</th>
+              <th>Actions</th>
           </thead>
           <tbody>
             <?php for($j = 1;$j<=count($doc);$j++){ ?>
@@ -37,6 +38,7 @@
                 <td><?= $doc[$j]['name']?></td>
                 <td><?= $doc[$j]['dateDeposit']?></td>
                 <td><?= $doc[$j]['lastModification']?></td>
+                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $docs[$j]['username']."_".$docs[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
               </tr>
             <?php } ?>
           </tbody>
@@ -52,6 +54,7 @@
               <th>deposit date</th>
               <th>last modification</th>
               <th>Whose is it ?</tr>
+              <th>Actions</th>
           </thead>
           <tbody>
             <?php for($j = 1;$j<=count($teacher);$j++){ ?>
@@ -60,6 +63,7 @@
                 <td><?= $teacher[$j]['dateDeposit']?></td>
                 <td><?= $teacher[$j]['lastModification']?></td>
                 <td><span class="blue-text text-blue-2"><?= $teacher[$j]['firstName']?> <?= $teacher[$j]['lastName']?></span>
+                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $teacher[$j]['username']."_".$teacher[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
               </tr>
             <?php } ?>
           </tbody>
@@ -75,6 +79,7 @@
               <th>deposit date</th>
               <th>last modification</th>
               <th>Whose is it ?</tr>
+              <th>Actions</th>
           </thead>
           <tbody>
             <?php for($j = 1;$j<=count($group);$j++){ ?>
@@ -83,6 +88,7 @@
                 <td><?= $group[$j]['dateDeposit']?></td>
                 <td><?= $group[$j]['lastModification']?></td>
                 <td><span class="blue-text text-blue-2"><?=$group[$j]['name']." from ".$group[$j]['username1']?></span>
+                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $group[$j]['username']."_".$group[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
               </tr>
             <?php } ?>
           </tbody>

@@ -19,8 +19,8 @@ CREATE TABLE WorkGroup (
 
 CREATE TABLE Doc(
       name varchar(100),
-      dateDeposit date,
-      lastModification date,
+      dateDeposit long,
+      lastModification long,
       username varchar(50),
       idGroup integer,
       FOREIGN KEY (idGroup) REFERENCES WorkGroup(idGroup),
