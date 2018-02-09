@@ -31,6 +31,7 @@
               <th>deposit date</th>
               <th>last modification</th>
               <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             <?php for($j = 1;$j<=count($doc);$j++){ ?>
@@ -38,7 +39,7 @@
                 <td><?= $doc[$j]['name']?></td>
                 <td><?= $doc[$j]['dateDeposit']?></td>
                 <td><?= $doc[$j]['lastModification']?></td>
-                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $docs[$j]['username']."_".$docs[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $doc[$j]['username']."_".$doc[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
               </tr>
             <?php } ?>
           </tbody>
@@ -53,8 +54,9 @@
               <th>Name</th>
               <th>deposit date</th>
               <th>last modification</th>
-              <th>Whose is it ?</tr>
+              <th>Whose is it ?</th>
               <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             <?php for($j = 1;$j<=count($teacher);$j++){ ?>
@@ -78,8 +80,9 @@
               <th>Name</th>
               <th>deposit date</th>
               <th>last modification</th>
-              <th>Whose is it ?</tr>
+              <th>Whose is it ?</th>
               <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             <?php for($j = 1;$j<=count($group);$j++){ ?>
@@ -87,7 +90,7 @@
                 <td><?= $group[$j]['name']?></td>
                 <td><?= $group[$j]['dateDeposit']?></td>
                 <td><?= $group[$j]['lastModification']?></td>
-                <td><span class="blue-text text-blue-2"><?=$group[$j]['name']." from ".$group[$j]['username1']?></span>
+                <td><span class="blue-text text-blue-2"><?=$group[$j]['groupName']." from ".$group[$j]['username1']?></span>
                 <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $group[$j]['username']."_".$group[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
               </tr>
             <?php } ?>

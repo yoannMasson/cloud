@@ -29,7 +29,7 @@
         <div class="input-field col s12" name="group">
           <select name="group">
             <?php for ($i=1;$i<=count($group);$i++){ ?>
-              <option value="<?= $group[$i]["idGroup"]?>"><?= $group[$i]["name"]?></option>
+              <option value="<?= $group[$i]["idGroup"]?>"><?= $group[$i]["groupName"]?></option>
             <?php } ?>
           </select>
           <label>Group name</label>
