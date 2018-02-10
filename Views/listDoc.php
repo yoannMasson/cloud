@@ -39,7 +39,10 @@
                 <td><?= $doc[$j]['name']?></td>
                 <td><?= $doc[$j]['dateDeposit']?></td>
                 <td><?= $doc[$j]['lastModification']?></td>
-                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $doc[$j]['username']."_".$doc[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                <td>
+                  <a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $doc[$j]['username']."_".$doc[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                  <a class="btn-floating btn-large waves-effect waves-light red" href="index.php?action=delete&file=<?= $doc[$j]['name']?>"><i class="material-icons">delete</i></a>
+                </td>
               </tr>
             <?php } ?>
           </tbody>
@@ -65,7 +68,9 @@
                 <td><?= $teacher[$j]['dateDeposit']?></td>
                 <td><?= $teacher[$j]['lastModification']?></td>
                 <td><span class="blue-text text-blue-2"><?= $teacher[$j]['firstName']?> <?= $teacher[$j]['lastName']?></span>
-                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $teacher[$j]['username']."_".$teacher[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                <td>
+                  <a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $teacher[$j]['username']."_".$teacher[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                </td>
               </tr>
             <?php } ?>
           </tbody>
@@ -91,7 +96,9 @@
                 <td><?= $group[$j]['dateDeposit']?></td>
                 <td><?= $group[$j]['lastModification']?></td>
                 <td><span class="blue-text text-blue-2"><?=$group[$j]['groupName']." from ".$group[$j]['username1']?></span>
-                <td><a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $group[$j]['username']."_".$group[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                <td>
+                  <a class="btn-floating btn-large waves-effect waves-light indigo accent-4" href="./files/<?= $group[$j]['username']."_".$group[$j]['name']?>" download><i class="material-icons">cloud download</i></a>
+                </td>
               </tr>
             <?php } ?>
           </tbody>

@@ -91,3 +91,9 @@ function uploadDoc(){
     }
     listDoc();
 }
+
+function deletetDoc($fileName){
+  unlink("files/".$_COOKIE['username']."_".$fileName);
+  Database::deleteFile($_COOKIE['username'],$fileName);
+  listDoc();
+}

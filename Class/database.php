@@ -10,7 +10,7 @@
 
     public static function getInstance() {
 
-      $host = "34.201.107.211";
+      $host = "54.152.36.41";
       $dbname = "cloud";
       $user = "remote";
       $pwd = "root";
@@ -86,5 +86,17 @@
         $group[$i] = $log;
       }
       return $group;
+    }
+
+    public static function isOwnerOf($username,$file){
+      $db = Database::getInstance();
+      $query = $db->query('SELECT * FROM Doc d WHERE d.name = "'.$file.'" AND d.username = "'.$username.'"');
+      $return = $query->fetch();
+      return $return;
+    }
+
+    public static function deleteFile($username,$fileName){
+      $db = Database::getInstance();
+      $query = $db->query('DELETE FROM Doc WHERE name = "'.$fileName.'" AND username = "'.$username.'"');
     }
 }

@@ -21,6 +21,14 @@ if (isset($_GET['action'])) {
     if($_GET['action'] == 'addDoc' && isset($_COOKIE['username'])){
         addDoc();
     }
+    if($_GET['action'] == 'delete' && isset($_GET['file'])  && isset($_COOKIE['username'])){
+      if(Database::isOwnerOf($_COOKIE['username'],$_GET['file'])){
+        deletetDoc($_GET['file']);
+      }else{
+        disconnect();
+        homePage();
+      }
+    }
 }else{
     disconnect();
     homePage();
